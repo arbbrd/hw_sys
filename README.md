@@ -40,4 +40,6 @@
 
 ![alt text](image-3.png)
 
+Делаем commit:
 
+![alt text](image-4.png)
