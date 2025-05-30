@@ -26,27 +26,27 @@
 Аккаунт зарегистрирован, публичный репозиторий создан.
 Клонируем, производим первоначальную настройку Git, смотрим git status:
 
-![alt text](image.png)
+![alt text](png/image.png)
 
 Редактируем файл, смотрим git status:
 
-![alt text](image-1.png)
+![alt text](png/image-1.png)
 
 Смотрим изменения, с помощью git diff и git diff --staged:
 
-![alt text](image-2.png)
+![alt text](png/image-2.png)
 
 Добавляем изменения из рабочего каталога в промежуточную область (staging area) перед созданием коммита, смотрим git diff и git diff --staged:
 
-![alt text](image-3.png)
+![alt text](png/image-3.png)
 
 Делаем commit:
 
-![alt text](image-4.png)
+![alt text](png/image-4.png)
 
 Делаем git push:
 
-![alt text](image-5.png)
+![alt text](png/image-5.png)
 
 Ссылка на первый commit:
 
@@ -69,15 +69,15 @@ https://github.com/arbbrd/hw_sys/commit/2041a3bbd8e0dc78ab257440350c70862d91df36
 
 Создаем, смотрим статус:
 
-![alt text](image-6.png)
+![alt text](png/image-6.png)
 
 Добавляем правила:
 
-![alt text](image-7.png)
+![alt text](png/image-7.png)
 
 Добавляем в индекс, commit и push:
 
-![alt text](image-8.png)
+![alt text](png/image-8.png)
 
 Ссылка на commit:
 
@@ -101,9 +101,9 @@ https://github.com/arbbrd/hw_sys/commit/91e9aa213a489d087a774461477bc274c36111c0
 
 ## Решение 3
 
-![alt text](image-9.png)
+![alt text](png/image-9.png)
 
-![alt text](image-10.png)
+![alt text](png/image-10.png)
 
 Ссылка на граф:
 
