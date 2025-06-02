@@ -1,0 +1,17 @@
+pipeline {
+            agent any
+                stages {
+                    stage('Git') {
+                        steps {git 'https://github.com/arbbrd/sdvps-materials.git'}
+                        }
+                    stage('Test') {
+                        steps {sh '/usr/lib/go/bin/go test .'}
+                        }
+                    stage('Build') {
+                        steps {sh '/usr/lib/go/bin/go build -a -installsuffix nocgo -o /tmp .'}
+                        }
+                    stage('Push') {
+                        steps {sh 'curl -u admin:admin http://192.168.19.152:8081/repository/jenkins/  --upload-file /tmp/sdvps-materials'}
+                        }
+    }
+}
