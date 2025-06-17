@@ -25,32 +25,32 @@ sudo apt install postgresql
 ```
 
 Устанавливаем Zabbix Server, Frontend, Agent 2 с поддержкой PostgreSQL и Apache
-```
-# Install Zabbix repository
 
+# Install Zabbix repository
+```
 wget https://repo.zabbix.com/zabbix/7.2/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.2+ubuntu24.04_all.deb
 sudo dpkg -i zabbix-release_latest_7.2+ubuntu24.04_all.deb
 sudo apt update
-
+```
 # Install Zabbix server, frontend, agent2
-
+```
 sudo apt install zabbix-server-pgsql zabbix-frontend-php php8.3-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent2
-
+```
 # Install Zabbix agent 2 plugins
-
+```
 sudo apt install zabbix-agent2-plugin-mongodb zabbix-agent2-plugin-mssql zabbix-agent2-plugin-postgresql
-
+```
 # Create initial database
-
+```
 sudo -u postgres createuser --pwprompt zabbix
 sudo -u postgres createdb -O zabbix zabbix
-
+```
 # Import initial schema
-
+```
 zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
-
+```
 # Configure the database for Zabbix server
-
+```
 sudo sed -i 's/# DBPassword=/DBPassword=zabbix/g' /etc/zabbix/zabbix_server.conf
 ```
 
