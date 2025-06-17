@@ -56,7 +56,7 @@ sudo sed -i 's/# DBPassword=/DBPassword=zabbix/g' /etc/zabbix/zabbix_server.conf
 
 Проверяем:
 
-![alt text](image.png)
+![alt text](arch/image.png)
 
 
 ## Задание 2
@@ -98,3 +98,15 @@ sudo nano /etc/zabbix/zabbix_agent2.conf
 sudo systemctl restart zabbix-agent2
 sudo systemctl enable zabbix-agent2
 ```
+
+Добавляем хосты на мониторинг:
+
+![alt text](arch/image-1.png)
+
+Лог zabbix_agent2
+
+![alt text](arch/image-2.png)
+
+Метрики:
+
+![alt text](arch/image-3.png)
