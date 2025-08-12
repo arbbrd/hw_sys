@@ -22,6 +22,7 @@
 ```
 sudo apt install haproxy
 sudo nano /etc/haproxy/haproxy.cfg 
+sudo systemctl reload haproxy.service
 ```
 Конфигурационный файл /etc/haproxy/[haproxy.cfg](./arch/haproxy-1.cfg)
 
