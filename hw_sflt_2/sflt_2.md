@@ -59,4 +59,6 @@ sudo nano /etc/haproxy/haproxy.cfg
 
 ![alt text](./arch/image-5.png)
 
+Смотрим статистику:
+
 ![alt text](./arch/image-6.png)
