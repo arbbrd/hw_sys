@@ -23,7 +23,7 @@
 sudo apt install haproxy
 sudo nano /etc/haproxy/haproxy.cfg 
 ```
-Конфигурационный файл /etc/haproxy/haproxy.cfg[here](./arch/haproxy-1.cfg)
+Конфигурационный файл /etc/haproxy/[haproxy.cfg](./arch/haproxy-1.cfg)
 
 Проверяем работу:
 
@@ -53,7 +53,7 @@ sudo nano /etc/haproxy/haproxy.cfg
 
 Меняем конфигурацию /etc/haproxy/haproxy.cfg.
 
-Конфигурационный файл /etc/haproxy/haproxy.cfg[here](./arch/haproxy-2.cfg)
+Конфигурационный файл /etc/haproxy/[haproxy.cfg](./arch/haproxy-2.cfg)
 
 Перезапускаем HAProxy и проверяем:
 
