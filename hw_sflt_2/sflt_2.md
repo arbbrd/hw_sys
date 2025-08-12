@@ -15,20 +15,48 @@
 
 Запускаем и проверяем два simple python сервера на портах 8888 и 9999:
 
-![alt text](image.png)
-![alt text](image-1.png)
+![alt text](./arch/image.png)
+![alt text](./arch/image-1.png)
 
 Устанавливаем, настраиваем и перезапускаепм HAProxy:
 ```
 sudo apt install haproxy
 sudo nano /etc/haproxy/haproxy.cfg 
 ```
-Конфигурационный файл /etc/haproxy/haproxy.cfg[here](./arch/haproxy.cfg)
+Конфигурационный файл /etc/haproxy/haproxy.cfg[here](./arch/haproxy-1.cfg)
 
 Проверяем работу:
 
-![alt text](image-3.png)
+![alt text](./arch/image-3.png)
 
 Смотрим статистику:
 
-![alt text](image-2.png)
+![alt text](./arch/image-2.png)
+
+
+
+## Задание 2
+
+Что нужно сделать:
+
+1. Запустите три simple python сервера на своей виртуальной машине на разных портах.
+2. Настройте балансировку Weighted Round Robin на 7 уровне, чтобы первый сервер имел вес 2, второй - 3, а третий - 4.
+3. HAproxy должен балансировать только тот http-трафик, который адресован домену example.local
+
+На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy c использованием домена example.local и без него.
+
+## Решение 2
+
+Запускаем еще один simple python сервер на порту 7777:
+
+![alt text](./arch/image-4.png)
+
+Меняем конфигурацию /etc/haproxy/haproxy.cfg.
+
+Конфигурационный файл /etc/haproxy/haproxy.cfg[here](./arch/haproxy-2.cfg)
+
+Перезапускаем HAProxy и проверяем:
+
+![alt text](./arch/image-5.png)
+
+![alt text](./arch/image-6.png)
