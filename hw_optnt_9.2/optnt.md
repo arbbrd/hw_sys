@@ -2,9 +2,9 @@
 
 ## Доступ к виртуальному маршрутизатору Cisco CSR по ssh:
 
-IP: 45.134.127.23
-Логин: netology_student
-Пароль: iamanetworkengineer!23
+        IP: 45.134.127.23
+        Логин: netology_student
+        Пароль: iamanetworkengineer!23
 
 ## Задание 1
 
