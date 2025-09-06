@@ -34,9 +34,11 @@ IP: 45.134.127.23
 
 1. Установить Zabbix на виртуальную машину.
 2. Добавить хост для мониторинга со следующими параметрами:
-    - Имя: netology_csr
-    - Адрес SNMP: 45.134.127.23
-    - SNMP Community: netology_snmp
+
+        Имя: netology_csr
+        Адрес SNMP: 45.134.127.23
+        SNMP Community: netology_snmp
+
 3. Прикрепить к хосту встроенный в заббикс шаблон Cisco IOS versions 12.0._3_T-12.2_3.5 by SNMP.
 4. Подождать 2 минуты и перейти в Latest data по хосту netology_csr.  
 
