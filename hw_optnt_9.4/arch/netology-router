@@ -1,0 +1,133 @@
+!RANCID-CONTENT-TYPE: cisco
+!
+!
+!
+!
+!
+Using 3476 out of 33554432 bytes
+!
+version 17.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname netology_csr
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret level 5 9 $9$SlbeHfHknGQUxk$gSBO.b2YBHET3WcHhAnk6FAjNU5Rla/pfRwjDRF7T6I
+enable secret 9 $9$3HDETjVzG2vQkk$3ZXe9JzMIyFQoK28jH14k4x0m3pLJBA6Raec43HY4dI
+!
+aaa new-model
+!
+aaa authentication login default local enable
+aaa authorization exec default local 
+!
+aaa session-id common
+!
+login block-for 600 attempts 5 within 60
+login on-success log
+!
+subscriber templating
+! 
+multilink bundle-name authenticated
+!
+crypto pki trustpoint TP-self-signed-2740053915
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2740053915
+ revocation-check none
+ rsakeypair TP-self-signed-2740053915
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki certificate chain TP-self-signed-2740053915
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01 nvram:CiscoLicensi#1CA.cer
+!
+license udi pid CSR1000V sn 9HLHPRWYP0Y
+diagnostic bootup level minimal
+memory free low-watermark processor 71477
+file privilege 5
+!
+spanning-tree extend system-id
+!
+username netology_student privilege 5 secret 9 $9$CplplSYNRX5qEk$3FjToE6xDXZRL9krxHSEcwLWHpq.IBz0fTnSmPtfCVM
+username root privilege 15 secret 9 $9$3Iye0JuhHJTXH.$pU42rwmEwJlTKdO/zDJewxlhIN.oR608/LkMcl8P.cA
+!
+redundancy
+!
+class-map match-all ssh-class
+ match access-group 100
+class-map match-all class-snmp
+ match access-group 102
+class-map match-all icmp-class
+ match access-group 101
+!
+policy-map control-plane-in
+ class ssh-class
+  police 50000 conform-action transmit  exceed-action drop 
+ class icmp-class
+  police rate 50 pps
+ class class-snmp
+  police 50000 conform-action transmit  exceed-action drop 
+!
+interface GigabitEthernet1
+ ip address 45.134.127.23 255.255.255.0
+ ip access-group inc_list in
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+ip route 0.0.0.0 0.0.0.0 45.134.127.1
+ip ssh time-out 60
+!
+ip access-list extended inc_list
+ 10 permit icmp any any
+ 20 permit tcp any host 45.134.127.23 eq 22
+ 30 permit udp any host 45.134.127.23 eq snmp
+!
+ip access-list extended 100
+ 10 deny   tcp host 93.174.53.240 any eq 22
+ 1000 permit tcp any any eq 22
+ip access-list extended 101
+ 10 deny   icmp host 93.174.53.240 any
+ 1000 permit icmp any any
+ip access-list extended 102
+ 10 permit udp any any eq snmp
+!
+snmp-server community netology_snmp RO
+snmp-server community netology_snmp_$5 RO
+snmp-server location O2xygen_DC
+snmp-server contact netology.ru
+snmp-server inform timeout 300
+!
+control-plane
+ service-policy input control-plane-in
+!
+privilege exec level 5 show startup-config
+privilege exec level 5 show running-config view full
+privilege exec level 5 show running-config view
+privilege exec level 5 show running-config
+privilege exec level 5 show configuration
+privilege exec level 5 show
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ exec-timeout 5 0
+ transport input ssh
+line vty 5 16
+ exec-timeout 5 0
+ transport input ssh
+!
+end
