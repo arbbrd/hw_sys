@@ -24,7 +24,7 @@ NAT-шлюз: Для исходящего интернет-трафика при
 
 Серверы: 2 идентичные ВМ в разных зонах доступности, без внешних IP.  
 Установка: Nginx + статичный сайт (например, из прошлых работ).  
-Балансировщик (Application Load Balancer): Target Group с двумя веб-ВМ, Backend Group с Health Check (HTTP:80, путь /), HTTP Router (путь / → Backend Group), ALB (listener на порту 80, тип auto).
+Балансировщик: Target Group с двумя веб-ВМ, Backend Group с Health Check (HTTP:80, путь /), HTTP Router (путь / → Backend Group), ALB (listener на порту 80, тип auto).  
 Тест: curl -v <публичный_IP_балансировщика>
 
 ## Мониторинг (Zabbix)
