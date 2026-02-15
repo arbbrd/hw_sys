@@ -69,7 +69,7 @@
 
 # Выполнение
 
-## Этап 1: Инфраструктура (Terraform)
+## Инфраструктура (Terraform)
 
 Создаём всю сеть и машины одним махом.
 
@@ -78,7 +78,7 @@
 - Балансировщик: ALB с публичным IP и настройками.  
 - Бэкапы: Настройка снапшотов для всех дисков.  
 
-## Этап 2: Настройка (Ansible)
+## Настройка (Ansible)
 
 Устанавливаем и настраиваем всё ПО.
 
@@ -87,5 +87,25 @@
 - Zabbix: Сервер + фронтенд + агент + настройка (хосты, дашборды).  
 - ELK: Elasticsearch + Kibana + автоматическое создание индексов.  
 
-## Этап 3: Тестирование
 
+Структура проекта примерно такая:
+
+```
+dplm_arb/
+├── terraform/
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── terraform.tfvars
+│   └── outputs.tf
+├── ansible/
+│   ├── ansible.cfg
+│   ├── inventory.yml
+│   └── playbooks/
+│       └── site.yml
+├── static_site/
+│   └── index.html
+```
+
+
+sudo wget https://hashicorp-releases.yandexcloud.net/terraform/1.14.4/terraform_1.14.4_linux_amd64.zip
+sudo unzip terraform_1.14.4_linux_amd64.zip -d /usr/local/bin/
